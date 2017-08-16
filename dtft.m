@@ -15,3 +15,5 @@ plot(w/pi,abs(X));
 plot(w/pi,real(X));
 plot(w/pi,imag(X));
 grid;legend('Magnitude de X(e^j^w)','Parte Real de X(e^j^w)','Parte Imaginária de X(e^j^w)')
+ylabel('Espéctro de x(n)')
+xlabel('\pi')
