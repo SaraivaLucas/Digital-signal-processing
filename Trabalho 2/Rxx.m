@@ -7,7 +7,7 @@ var=0.5;                                % Variância
 AWGN= mu+var*randn(1,N);                % Geração do ruido
 
 %% Cálculo da Autocorrelação
-Rxx=zeros(1,2*N);
+Rxx=zeros(1,N);
     for m=1: N+1
         for n=1: N-m+1
             Rxx(m)=Rxx(m)+AWGN(n)*x(n+m-1);

@@ -1,30 +1,33 @@
-clc; close all;clear all;
+clc; close all;clear all;  
 %% Parâmetros do sinal 
-N=1000;                                 % Número de amostras
-n=0:N-1;                                % Números de índice de amostra
+N=100;                                  % Número de amostras/Bloco
 mu=0;                                   % Média do sinal
 var=0.5;                                % Variância
-AWGN= mu+var*randn(1,N);                % Geração do ruido
-
 %% Cálculo da Autocorrelação Unilateral
-Rxx=zeros(1,2*N);                       % Cria vetor da autocorrelação
-% Somatório de cada elemento do vetor
-
-    for Tau= 1 :N+1  
-        for n=1: N-Tau+1
-            Rxx(Tau)=Rxx(Tau)+AWGN(n)*AWGN(n+Tau-1);
+for N=[100 50 10]                       % Número de amostras/Bloco
+m=0:N-1;                              % Definição de TAU (Com atraso 0)
+for L=[50 500 5000]                     % Número de blocos
+AWGN= mu+var*randn(1,N*L);              % Geração do ruido
+for l=1:L
+Rxx(l,:)=zeros(1,N);                    % Cria vetor da autocorrelação
+% Calcula a autocorrelação
+    for m= 1 :N+1
+        for n=(l-1)*N+1: l*N-m+1
+            Rxx(l,m)=Rxx(l,m)+AWGN(n)*AWGN(n+m-1);
         end;
     end;
-Rxx=Rxx/N;
-
-%% Montando lado negativo da autocorrelação manualmente (Simetria Par)
-for i= 0:N-1
-    Rxx(N+i)= Rxx(N-i+1);
 end
-Rxx=fftshift(Rxx);   
-Rxx(1,N:2*N-1)=Rxx(1,N+1:2*N);
-
-%% Autocorrelação pela função do Matlab
-Rxx_Mat=xcorr(AWGN)/N;
-Rxx_Mat(1,2*N)=0;
+end
+n=0:N-1;                                % Números de índice de amostra
+figure                                  % Cria uma figura pra N(i)
+Rxxfinal=sum(Rxx(:,:)/N);               % Normaliza sinal
+%% Plotting
+subplot(2,1,1)                          
+plot(Rxx(l,:))
+title(['Autocorrelação para N=',num2str(N(1,1)) ])
+subplot(2,1,2)
+plot(n,Rxxfinal)
+title(['Resultante Para L=[50 500 5000] e N=',num2str(N(1,1)) ])
+clear Rxx;
+end
 
