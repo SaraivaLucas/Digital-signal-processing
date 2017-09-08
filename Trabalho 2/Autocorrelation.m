@@ -21,9 +21,10 @@ end
 n=0:N-1;                                % Números de índice de amostra
 figure                                  % Cria uma figura pra N(i)
 Rxxfinal=sum(Rxx(:,:)/N);               % Normaliza sinal
+
 %% Plotting
 subplot(2,1,1)                          
-plot(Rxx(l,:))
+plot(n,Rxx(l,:))
 title(['Autocorrelação para N=',num2str(N(1,1)) ])
 subplot(2,1,2)
 plot(n,Rxxfinal)
