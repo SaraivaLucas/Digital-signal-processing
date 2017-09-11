@@ -8,7 +8,7 @@ The DTFT is unaplicable by a code. But we can compute the transform by hands-on 
 
 
 
-## [Computational Simulation - Discrete Time Signals and Systems](http://nbviewer.jupyter.org/github/SaraivaLucas/Digital-signal-processing/blob/master/Trabalho%202/Trabalho%20Rxx.ipynb)
+## [Computational Simulation - AWGN Autocorrelation](http://nbviewer.jupyter.org/github/SaraivaLucas/Digital-signal-processing/blob/master/Trabalho%202/Trabalho%20Rxx.ipynb)
 Here, we will estimate the autocorrelation of a AWGN (Gausian Noise) which has mean μ=0 and variance σ²=0.5$. As long as we increase the numbers of samples, the correlation tends to a standard, which is the truely autocorrelation of an AWGN. It means that the only information that the Rxx of a signal has is it's power (Rxx(n=0)), tending to zero along it's length.
 
 -----
