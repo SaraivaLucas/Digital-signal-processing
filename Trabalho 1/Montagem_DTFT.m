@@ -1,6 +1,6 @@
 clc;clear all;close all;
 %% Parâmetros dado pelo professor:
-n=0:0.4:10;                                        % Montagem do eixo n
+n=0:0.4:10;                                         % Montagem do eixo n
 x=(0.9*exp(1j*pi/3)).^n;                            % Montagem do sinal
 M=500;                                              % Número de amostras
 k=-M:M-1;                                           % Montagem do eixo k

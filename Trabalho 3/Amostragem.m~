@@ -1,0 +1,23 @@
+clc;clear all;close all;
+%% Parâmetros
+fs=5*1e4;                                               % Frequência de amsotragem 50kHz
+ti=5e-3;                                                % Tempo inicial
+t=-ti:1/fs:ti-1/fs;                                     % Eixo do tempo
+xv=exp(-1000*abs(t));                                   % Sinal x(n)
+% subplot(2,1,1)
+% plot(t,xv)
+% title('Sinal Não Amostrado no Tempo')
+
+%% Aplicando a transformada de Fourier ao sinal
+lfft=length(xv);
+Xa=fftshift(fft(xv,lfft)/lfft);
+freq=-fs/2:fs/lfft:fs/2-1/fs;
+% subplot(2,1,2)
+% plot(freq,abs(Xa))
+% title('Sinal Não Amostrado na Frequência')
+
+%% Amostragem
+FS=5e3;                                                 % Nova frequência de amostragem 5kHz
+N=round(fs/FS);                                         % Encontr
+x_samp=downsample(xv,N);
+x_samp=upsample(xv,N);
