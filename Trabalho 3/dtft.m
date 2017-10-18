@@ -7,11 +7,11 @@ M=floor(length(w));                                    % Número de amostras do 
 k=w*(M/pi);                                            % Reconstrução do vetor k
 X=x*exp((-1j*pi/M).*(n'*k));                           % Equação da DTFT
 
-%% Plotting
-figure ()
-hold on
-title('Espectro de X(e^j^w)')
-plot(w/pi,abs(X));
+% %% Plotting
+% figure ()
+% hold on
+% title('Espectro de X(e^j^w)')
+% plot(w/pi,abs(X));
 % plot(w/pi,real(X));
 % plot(w/pi,imag(X));
 % grid;legend('Magnitude de X(e^j^w)','Parte Real de X(e^j^w)','Parte Imaginária de X(e^j^w)')
